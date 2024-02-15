@@ -1,0 +1,1 @@
+Temperature in Paris is  9.81 C

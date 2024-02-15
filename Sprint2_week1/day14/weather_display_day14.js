@@ -18,7 +18,7 @@ const cities = [
 async function display_weather(city_name) {
     try {
         const apiKey = 'bde7e9114a6d3c2e45b15cade4778466';
-        const city = cities.find(c => c.name == city_name);
+        const city = cities.find((c) => c.name == city_name);
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lng}&appid=${apiKey}&units=metric`;
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -26,7 +26,7 @@ async function display_weather(city_name) {
 
         return temp;
     } catch (error) {
-        throw new Error('bug : failed to fetch the data from weather api' ,error.message);
+        throw new Error('bug : failed to fetch the data from weather api\n', error.message);
     }
 }
 
@@ -34,7 +34,7 @@ async function display_weather(city_name) {
 function deleteCityFile(cityName) {
     const filename = `${cityName}.txt`;
     try {
-        fs.unlinkSync(filename);
+        fs.unlink(filename);
     } catch (error) {
     }
 }
@@ -42,7 +42,9 @@ function deleteCityFile(cityName) {
 //* write result in a new file
 function write_to_File(cityName, temperature) {
     const filename = `${cityName}.txt`;
-    fs.writeFileSync(filename, `Temperature in ${cityName}: ${temperature} C`);
+    fs.writeFile(filename, `Temperature in ${cityName} is  ${temperature} C`, (err) => {
+        if (err) { console.log('bug : failure in writing the new file \n', err.message) };
+    });
 }
 //* function to select a random city from an array
 function selectRandomCity(cities) {
@@ -52,14 +54,13 @@ function selectRandomCity(cities) {
 //* read array of city names from "input.txt" and do the magic 
 fs.readFile('input.txt', 'utf8', (err, data) => {
     if (err) {
-        throw new Error('bug : failure in reading the input.txt:');
-       
+        throw new Error('bug : failure in reading the input.txt');
+
     }
     try {
-        const city_Names = data; 
-        const random_city = selectRandomCity(JSON.parse(city_Names)); 
+        const random_city = selectRandomCity(JSON.parse(data));
 
-      //* retrieve the weather data 
+        //* retrieve the weather data 
         display_weather(random_city)
             .then(temp => {
                 deleteCityFile(random_city);
@@ -67,10 +68,10 @@ fs.readFile('input.txt', 'utf8', (err, data) => {
                 console.log('the new file was created succesfuly :D')
             })
             .catch(error => {
-                console.error('bug : error in display weather function', error.message);
+                console.error('bug : error in display weather function\n', error.message);
             });
     } catch (error) {
-        console.error('bug : failure parsing the file data  ', error.message);
+        console.error('bug : failure parsing the file data \n ', error.message);
     }
 });
 
