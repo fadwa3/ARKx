@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
 //*the dummy array 
-let products = [{ id: 11, name: "petitPeure", company: " Be", price: 2 },
-{ id: 12, name: "king", company: "exelo", price: 2 }
-    , { id: 13, name: " momo", company: "bimo", price: 1 },
-{ id: 14, name: "capri", company: "exelo", price: 3 }]
+let products = [
+    { id: 1, name: 'iPhone 12 Pro', price: 1099.99 },
+    { id: 2, name: 'Samsung Galaxy S21', price: 999.99 },
+    { id: 3, name: 'Sony PlayStation 5', price: 499.99 },
+    { id: 4, name: 'MacBook Pro 16', price: 2399.99 },
+    { id: 5, name: 'DJI Mavic Air 2', price: 799.99 },
+];
 
 //!  define the /products route
 app.get('/products', (req, res) => {
@@ -25,10 +28,10 @@ app.get('/products/search', (req, res) => {
 });
 //! add a product
 app.post('/products', (req, res) => {
-    const { name, company, price } = req.body;
+    const { name, price } = req.body;
 
     const id = products[products.length - 1].id + 1
-    const newProd = { id, name, company, price };
+    const newProd = { id, name, price };
     products.push(newProd);
 
     res.status(200).json(products);
