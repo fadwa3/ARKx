@@ -34,7 +34,6 @@ const salery = sheet[`B${i}`].v;
     //* pushing all the data in an array
     Data.push({Id,salery,bonusPercentage,bonusAmount});
 }
- //console.log(Data);
 
 //! now put all of that in a new excel file
 
