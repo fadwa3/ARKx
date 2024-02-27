@@ -109,9 +109,9 @@ app.use((req, res, next) => {
 });
 
 //*the  Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     console.log('here is an error ', err);
-    res.status(err.status).send(`oops you encounted an error !! : ${err.message}`);
+    res.status(err.status).json(`oops you encounted an error !! : ${err.message}`);
 
 });
 

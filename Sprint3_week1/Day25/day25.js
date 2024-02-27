@@ -1,19 +1,29 @@
+//*      *** Google strategy is added in the buttom ***
+//! this day contain the local Auth and google Strategy
+
+
+
 //! import nessecery modules
 const express = require('express');
 const { body, validationResult } = require('express-validator');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+require('dotenv').config()
 var flash = require('connect-flash');
+
 const app = express();
 //! Middlewares
 app.use(express.json());
+
 app.use(flash());
+
 app.use(express.urlencoded({ extended: false }));
 app.use(
     session({
         isconnected: false,
-        secret: 'mySecretKey',
+        secret: process.env.Secret_Key,
         resave: false,
         saveUninitialized: true
     }));
@@ -24,9 +34,15 @@ app.use(passport.session());
 //! Server variable 
 const users = [
     {
+        id: 1,
         username: 'fadwa',
         password: 'admin',
     },
+    {
+        id: 2,
+        username: 'username',
+        password: 'password',
+    }
 ];
 //! Passport Local Authentification
 //*the log in 
@@ -89,9 +105,11 @@ app.get("/", (req, res) => {
       <input type="password" name="password" placeholder="Password" required><br>
       <button type="submit">Login</button>
     </form>
+        <a href="/auth/google">Login with Google</a>
+
   `);
 });
-//! changed (added the Passport)
+
 app.post('/login',
     passport.authenticate('local', {
         successRedirect: '/home',
@@ -99,7 +117,54 @@ app.post('/login',
         failureFlash: true
     })
 );
-//*
+
+//! Passport Google strategy 
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.YOUR_CLIENT_SECRET,
+    callbackURL: 'http://localhost:3000/auth/google/callback'
+},
+    (accessToken, refreshToken, profile, done) => {
+        //* verify if user exist
+        const userexist = users.find(user => user.id == profile.id);
+        if (userexist) {
+            done(null, profile)
+        } else {
+            //* does not exist so we create a new user 
+
+            const newUser = {
+                id: profile.id,
+                name: profile.displayName,
+            };
+            users.push(newUser);
+            done(null, newUser);
+        }
+    }
+
+));
+//* serialize function for google strategy
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+//* deserialize function for google strategy
+passport.deserializeUser((id, done) => {
+    const user = users.find(user => user.id === id);
+    done(null, user);
+});
+
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile'] })
+);
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/home',
+        failureRedirect: '/',
+        failureFlash: true
+    })
+);
+//* function to verify Authentification
 function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -115,7 +180,6 @@ app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 })
-
 //! Error handling Middlewares
 app.use((req, res, next) => {
     res.status(404).send("oops the route was not found!");
@@ -124,6 +188,6 @@ app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).send("ooops something went wrong");
 });
-app.listen(3009, () => {
-    console.log("Server is running on port 3009 ...");
+app.listen(3000, () => {
+    console.log("Server is running on port 3000 ...");
 });

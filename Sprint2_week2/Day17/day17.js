@@ -55,6 +55,7 @@ app.delete('/products/:id', (req, res) => {
     const product = products.find((prod) => prod.id === parseInt(req.params.id));
     if (!product) {
         res.send("the product already doesn't exist");
+        return;
     } else {
         for (let i = products.indexOf(product); i < products.length - 1; i++) {
             [products[i], products[i + 1]] = [products[i + 1], products[i]]
