@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 //! Connect to  MongoDB database
 async function connectdb() {
     try {
-
         await mongoose.connect("mongodb://localhost:27017/first_db")
         console.log("Connected to database")
 
@@ -23,9 +22,7 @@ async function connectdb() {
 //! Creating a new user
 async function createuser(name, email, age) {
     const User = await connectdb();
-
     try {
-
         const newUser = await new User({
             name: name,
             email: email,
@@ -77,7 +74,7 @@ async function updateuser() {
 
 
     } catch (error) {
-        console.log("Error fetching users: ", error)
+        console.log("Error updating the user: ", error)
     }
 }
 //! Deleting a user
