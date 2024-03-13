@@ -1,0 +1,157 @@
+/* style the Header  */
+body {
+  margin: 0;
+}
+header {
+  /* font-family: ; */
+  font-size: 18px;
+  display: flex;
+  top: 0%;
+  background-color: #161934;
+  padding: 10px 10px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+header nav {
+  align-items: center;
+  display: flex;
+}
+header ul {
+  display: flex;
+}
+header ul li {
+  list-style-type: none;
+  margin: 10px;
+}
+.right {
+  display: flex;
+  align-items: center;
+}
+header a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.search input {
+  flex: 1;
+  width: 200px;
+  padding: 10px;
+  margin-left: 590px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+header button {
+  padding: 10px 10px;
+  background-color: #6968f3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+header select {
+  font-size: 16px;
+  padding: 10px 10px;
+  background-color: #161934;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+/* style the Footer  */
+footer {
+  background-color: #161934;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer img {
+  width: 100px;
+  height: auto;
+}
+footer h4 {
+  margin-bottom: 10px;
+}
+footer a {
+  color: #c5c0c0;
+  display: block;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #ffffff;
+}
+
+/* style the landig video  */
+
+.Featured_Movie video {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+/* Hide video controls */
+.Featured_Movie video::-webkit-media-controls {
+  display: none;
+}
+
+.Featured_Movie video::-webkit-media-controls-enclosure {
+  display: none;
+}
+.New_Release {
+  background-color: #161934;
+  color: #fff;
+}
+.playnow {
+  padding: 10px 10px;
+  background-color: #6968f3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+a {
+  text-decoration: none;
+}
+button {
+  text-decoration: none;
+}
+.paraghraph {
+  display: flex;
+}
+.paraghraph p {
+  margin-right: 12px;
+}
+.movieheader {
+  display: flex;
+  align-items: center;
+}
+.movies {
+  display: flex;
+}
+.movies div {
+  background-color: #c5c0c0;
+  margin: 10px;
+  padding: 10px;
+}
+.desc {
+  position: absolute;
+  top: 300px;
+  left: 30%;
+}
+.movieheader a {
+}
