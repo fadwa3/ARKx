@@ -1,15 +1,17 @@
 /* style the Header  */
-body {
+
+* {
+  font-family: "Madimi One", sans-serif;
   margin: 0;
+  padding: 0;
 }
 header {
-  /* font-family: ; */
+  font-family: "Madimi One", sans-serif;
   font-size: 18px;
   display: flex;
   top: 0%;
-  background-color: #161934;
+  background-color: #265073;
   padding: 10px 10px;
-  position: fixed;
   z-index: 1;
   width: 100%;
 }
@@ -23,6 +25,10 @@ header ul {
 header ul li {
   list-style-type: none;
   margin: 10px;
+}
+.left {
+  display: flex;
+  align-items: center;
 }
 .right {
   display: flex;
@@ -45,7 +51,7 @@ header a {
 
 header button {
   padding: 10px 10px;
-  background-color: #6968f3;
+  background-color: #9ad0c2;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -56,15 +62,15 @@ header button {
 header select {
   font-size: 16px;
   padding: 10px 10px;
-  background-color: #161934;
+  background-color: #265073;
   color: #fff;
   border: none;
   cursor: pointer;
   margin-left: 10px;
 }
 /* style the Footer  */
-footer {
-  background-color: #161934;
+.top_footer {
+  background-color: #265073;
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -72,31 +78,36 @@ footer {
   color: #fff;
 }
 
-footer ul {
+.top_footer ul,
+.under_footer ul {
   margin: 0;
-  padding: 0;
+  padding: 10px;
   list-style: none;
 }
 
-footer img {
+.top_footer img {
   width: 100px;
   height: auto;
 }
-footer h4 {
+.top_footer h4 {
   margin-bottom: 10px;
 }
-footer a {
+.top_footer a,
+.under_footer a {
   color: #c5c0c0;
   display: block;
   margin-bottom: 5px;
   text-decoration: none;
 }
-footer a:hover {
+.top_footer a:hover,
+.under_footer a:hover {
   color: #ffffff;
 }
 
 /* style the landig video  */
-
+.Featured_Movie {
+  background-color: #265073;
+}
 .Featured_Movie video {
   width: 100%;
   height: auto;
@@ -106,26 +117,35 @@ footer a:hover {
 .Featured_Movie video::-webkit-media-controls {
   display: none;
 }
-
 .Featured_Movie video::-webkit-media-controls-enclosure {
   display: none;
 }
 .New_Release {
-  background-color: #161934;
+  background-color: #265073;
   color: #fff;
+  padding: 10px;
 }
 .playnow {
-  padding: 10px 10px;
-  background-color: #6968f3;
+  padding: 10px 30px;
+  background-color: #9ad0c2;
   color: #fff;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 10px;
+}
+.watchlater {
+  padding: 10px 10px;
+  background-color: #265073;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 a {
   text-decoration: none;
+  color: #fff;
 }
 button {
   text-decoration: none;
@@ -134,24 +154,75 @@ button {
   display: flex;
 }
 .paraghraph p {
-  margin-right: 12px;
+  margin-right: 10px;
 }
 .movieheader {
   display: flex;
   align-items: center;
+  /* justify-content: space-evenly; */
+}
+.movieheader a {
+  font-size: x-large;
+  margin-left: 83%;
 }
 .movies {
   display: flex;
+  overflow: auto;
+  color: #265073;
 }
 .movies div {
-  background-color: #c5c0c0;
+  background-color: #9ad0c2;
   margin: 10px;
   padding: 10px;
 }
+
+.movies div a {
+  color: #265073;
+}
 .desc {
   position: absolute;
-  top: 300px;
-  left: 30%;
+  top: 35%;
+  left: 8%;
+  font-size: x-large;
+  color: #fff;
+  font-family: "Madimi One", sans-serif;
+  width: 37%;
 }
-.movieheader a {
+.desc h1 a {
+  font-size: 60px;
+  color: #9ad0c2;
+  font-family: "Madimi One", sans-serif;
+  padding-top: 10px;
+}
+.desc p {
+  padding: 20px 0px;
+}
+.under_footer {
+  display: flex;
+  align-items: center;
+  border-top: 0.5px solid;
+  border-color: #9ad0c2;
+  background-color: #265073;
+  padding: 0px 20px;
+  justify-content: space-between;
+  color: #fff;
+}
+.under_footer ul {
+  display: flex;
+}
+.under_footer ul li {
+  margin-left: 10px;
+}
+/* style of movies page */
+.mainMovies {
+  color: black;
+  top: 50%;
+}
+.mainMovies a {
+  color: #265073;
+}
+.all {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }

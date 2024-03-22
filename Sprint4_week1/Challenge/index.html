@@ -5,26 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
-      <nav>
-        <div><img src="images/logo.jpg" /></div>
-        <ul>
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li>
-            <a href="movies.html">Movies</a>
-          </li>
-          <li>
-            <a href="about.html">About Us</a>
-          </li>
-          <li>
-            <a href="contact.html">Contact Us</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="left">
+        <div><h1>LOGO</h1></div>
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="movies.html">Movies</a>
+            </li>
+            <li>
+              <a href="about.html">About Us</a>
+            </li>
+            <li>
+              <a href="contact.html">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <div class="right">
         <div class="search">
           <input type="text" placeholder="Find movies ..." />
@@ -48,27 +56,25 @@
         Your browser does not support the video tag.
       </video>
       <div class="desc">
-        <div class="descr">
-          <a href="">Action Thriller</a>
-          <h2><a href="">John Wick 4</a></h2>
-          <div class="paraghraph">
-            <p>8.2</p>
-            <p>2023</p>
-            <p>1 h 25 mins</p>
-            <p>TV-MA</p>
-          </div>
-          <p>
-            Enjoy exclusive Originals as well as popular movies and TV shows for
-            USD 120z/month. Watch now, cancel anytime.
-          </p>
+        <a href="">Action Thriller</a>
+        <h1><a href="">John Wick 4</a></h1>
+        <div class="paraghraph">
+          <p>8.2</p>
+          <p>2023</p>
+          <p>1 h 25 mins</p>
+          <p>TV-MA</p>
         </div>
+        <p>
+          Enjoy exclusive Originals as well as popular movies and TV shows for
+          USD 120z/month. Watch now, cancel anytime.
+        </p>
+
         <div>
           <button class="playnow"><a href="">Play Now</a></button>
           <button class="watchlater"><a href="">Watch Later</a></button>
         </div>
       </div>
     </section>
-
     <section class="New_Release">
       <div class="movieheader">
         <h1>Trending Movies</h1>
@@ -76,7 +82,7 @@
       </div>
 
       <div class="movies">
-        <div>
+        <div class="onevide">
           <img src="images/john_wick4.jpeg" />
           <h4><a href="">Added to My List Add to My List</a></h4>
           <h4><a href="">John Wick 4</a></h4>
@@ -110,6 +116,17 @@
           <a href="">Action Adventure</a>
         </div>
         <div>
+          <img src="images/john_wick4.jpeg" />
+          <h4><a href="">Added to My List Add to My List</a></h4>
+          <h4><a href="">John Wick 4</a></h4>
+          <div class="paraghraph">
+            <p>2023</p>
+            <p>1hr 25 mins</p>
+            <p>TV-MA</p>
+          </div>
+          <a href="">Action Thriller</a>
+        </div>
+        <div class="onevide">
           <img src="images/the_post.jpeg" />
           <h4><a href="">Added to My List Add to My List</a></h4>
           <h4><a href="">The Post</a></h4>
@@ -119,17 +136,6 @@
             <p>TV-MA</p>
           </div>
           <a href="">Romance Thriller</a>
-        </div>
-        <div>
-          <img src="images/spider_man.jpeg" />
-          <h4><a href="">Added to My List Add to My List</a></h4>
-          <h4><a href="">Spider Man Memo</a></h4>
-          <div class="paraghraph">
-            <p>2023</p>
-            <p>1hr 25 mins</p>
-            <p>TV-MA</p>
-          </div>
-          <a href="">Action Anime</a>
         </div>
         <div class="onevide">
           <img src="images/spider_man.jpeg" />
@@ -146,43 +152,44 @@
       <!--  -->
     </section>
     <footer>
-      <div><img src="images/logo.jpeg" /></div>
-      <div>
-        <h4>Connect with us</h4>
-        <a href="">Facebook</a>
-        <a href="">Twitter</a>
-        <a href="">Github</a>
-      </div>
-      <div>
-        <h4>Help</h4>
-        <ul>
-          <li>
-            <a href="">My Account</a>
-          </li>
-          <li>
-            <a href="">Customer Support</a>
-          </li>
-          <li>
-            <a href="">Contact Us</a>
-          </li>
-          <li>
-            <a href="">About Us</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h4>Download Movies mobile app</h4>
-        <a href=""><img src="images/app_play.png" /></a>
-        <a href=""><img src="images/playstore.png" /></a>
+      <div class="top_footer">
+        <div><h1>LOGO</h1></div>
+        <div class="footer_part">
+          <h4>Connect with us</h4>
+          <a href="">Facebook</a>
+          <a href="">Twitter</a>
+          <a href="">Github</a>
+        </div>
+        <div class="footer_part">
+          <h4>Help</h4>
+          <ul>
+            <li>
+              <a href="">My Account</a>
+            </li>
+            <li>
+              <a href="">Customer Support</a>
+            </li>
+            <li>
+              <a href="">Contact Us</a>
+            </li>
+            <li>
+              <a href="">About Us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer_part">
+          <h4>Download Movies mobile app</h4>
+          <a href=""><img src="images/app_play.png" /></a>
+          <a href=""><img src="images/playstore.png" /></a>
+        </div>
       </div>
       <div class="under_footer">
+        <p>Copyright c 2024 Movie APP . All rights reserved</p>
         <ul>
-          <li>Privacy Policy</li>
-          <li>Terms of Service</li>
+          <li><a href=""> Policy</a></li>
+          <li><a href="">Terms of Service</a></li>
         </ul>
-        <h4>Copyright c 2023 Movie APP. All rights reserved</h4>
       </div>
-      <a href="">Top</a>
     </footer>
   </body>
 </html>
