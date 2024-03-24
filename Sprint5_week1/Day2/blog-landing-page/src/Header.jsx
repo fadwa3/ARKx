@@ -1,20 +1,20 @@
-import React from "react";
-
-function Header() {
+function Header({ name, links, isLoggedIn, backgroundColor }) {
+  const headerStyle = {
+    backgroundColor: backgroundColor,
+  };
   return (
-    <div className="Header">
-      <h1>LoGo</h1>
-      <ol>
+    <div className="Header" style={headerStyle}>
+      <h1>{name}</h1>
+      <ul>
+        {links.map((nav, index) => (
+          <li key={index}>
+            <a href={nav.link}>{nav.name}</a>
+          </li>
+        ))}
         <li>
-          <a href="http://">Home</a>
+          <button>{isLoggedIn ? "Logout" : "Login"}</button>
         </li>
-        <li>
-          <a href="http://">Blogs</a>
-        </li>
-        <li>
-          <a href="http://">About Us</a>
-        </li>
-      </ol>
+      </ul>
     </div>
   );
 }
