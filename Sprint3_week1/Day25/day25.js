@@ -56,6 +56,7 @@ passport.use(new LocalStrategy(
         return done(null, user);
     }
 ));
+
 //* the serialize
 passport.serializeUser((user, done) => {
     done(null, user.username);
