@@ -8,7 +8,7 @@ function MainContent({ posts, setPosts }) {
     description: "",
   });
 
-  //*Function to handle editing a post get the index of the post and it's data
+  //*editing a post get the index of the post and it's data
   const handleEditPost = (index) => {
     setEditingPostIndex(index);
     setUpdatedPost({
@@ -16,14 +16,14 @@ function MainContent({ posts, setPosts }) {
       description: posts[index].description,
     });
   };
-  // Function to handle deleting a post
+  //*deleting a post
   const handleDeletePost = (index) => {
     const updatedPosts = [...posts];
     updatedPosts.splice(index, 1);
     setPosts(updatedPosts);
   };
 
-  //*Function to handle updating a post
+  //*updating a post
   const handleUpdatePost = (index) => {
     const updatedPosts = [...posts];
     updatedPosts[index] = { ...updatedPost };
@@ -46,9 +46,8 @@ function MainContent({ posts, setPosts }) {
 
   return (
     <div className="MainContent">
-
       <h1>Blog Application</h1>
-      
+
       <div className="blogPosts">
         {posts.length === 0 ? (
           <p>Oops, No posts are available</p>
