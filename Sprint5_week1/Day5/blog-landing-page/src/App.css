@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.Header {
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  height: 80px;
+}
+.Header ul {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+.Header ul a {
+  text-decoration: none;
+  color: #627254;
+  font-size: larger;
+}
+.Header button {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: #627254;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.Header button:hover {
+  background-color: #405b29;
+}
+
+.Footer {
+  position: absolute;
+  background-color: #627254;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 80px;
+  bottom: 0%;
+  width: 100%;
+}
+.MainContent h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.blogPosts {
+  display: flex;
+  /* grid-auto-flow: row; */
+  justify-items: center;
+  flex-wrap: wrap;
+}
+.PostContainer {
+  background-color: #adbc9f;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 20%;
+}
+
+.MainContent h1 {
+  text-align: center;
+  margin-top: 20px;
+}

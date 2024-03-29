@@ -146,7 +146,7 @@ function App() {
             <>
               <LoginForm users={users} setTrackLogin={setTrackLogin} />
               <p>
-                You don't have an account yet ?
+                You don't have an account yet ?{" "}
                 <button onClick={() => setFormshowed(true)}>Sign Up</button>
               </p>
             </>
@@ -157,7 +157,7 @@ function App() {
             <>
               <SignUpForm users={users} setUsers={setUsers} />
               <p>
-                You already have an account ?
+                You already have an account ?{" "}
                 <button onClick={() => setFormshowed(false)}>Log In</button>
               </p>
             </>
