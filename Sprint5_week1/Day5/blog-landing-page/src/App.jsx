@@ -5,15 +5,12 @@ import Footer from "./Footer.jsx";
 import MainContent from "./MainContent.jsx";
 import LoginForm from "./LoginForm.jsx";
 import SignUpForm from "./SignUpForm.jsx";
-//!
-// import { useForm } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
-// import { z } from "zod";
+import { Routes, Route } from "react-router-dom";
+import AddBlog from "./AddBlog.jsx";
 
 function App() {
   //! States to manage user data
   const [TrackLogin, setTrackLogin] = useState(false);
-  const [formshowed, setFormshowed] = useState(false);
   const [users, setUsers] = useState([
     {
       email: "user1@example.com",
@@ -30,9 +27,9 @@ function App() {
   //* Dynamic header content
   const name = "BlogApp";
   const links = [
-    { name: "Home", link: "" },
-    { name: "Blogs", link: "" },
-    { name: "About Us", link: "" },
+    { name: "Home", link: "/home" },
+    { name: "New Blog", link: "/AddBlog" },
+    { name: "Blogs", link: "/home" },
   ];
   const backgroundColor = "#627254";
 
@@ -64,36 +61,6 @@ function App() {
     },
   ]);
 
-  //* State variables for new post form
-  const [showForm, setShowForm] = useState(false);
-  const [newPost, setNewPost] = useState({
-    title: "",
-    description: "",
-  });
-
-  //* Function to handle input change in the new post form
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewPost({
-      ...newPost,
-      [name]: value,
-    });
-  };
-
-  //** function for adding new post
-  const handleAddPost = () => {
-    //** Check if title and description not empty
-    if (newPost.title.trim() !== "" && newPost.description.trim() !== "") {
-      //** Add new post to the posts array
-      setPosts([...posts, newPost]);
-      //** Clear the form and hide it
-      setNewPost({
-        title: "",
-        description: "",
-      });
-      setShowForm(false);
-    }
-  };
   return (
     <div className="main">
       <Header
@@ -102,69 +69,61 @@ function App() {
         TrackLogin={TrackLogin}
         headerColor={backgroundColor}
       />
-      {TrackLogin && (
-        <>
-          <div className="add-post-form">
-            {/* //*Show "Add New Blog" button when form is not visible */}
-            {!showForm && (
-              <button onClick={() => setShowForm(true)}>Add New Blog</button>
-            )}
-            {/* //*Show form to add new blog post when form is visible */}
-            {showForm && (
-              <form>
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Title"
-                  value={newPost.title}
-                  onChange={handleInputChange}
-                  required
-                />
-                <textarea
-                  name="description"
-                  placeholder="Description"
-                  value={newPost.description}
-                  onChange={handleInputChange}
-                  required
-                ></textarea>
-                <button type="button" onClick={handleAddPost}>
-                  Add Post
-                </button>
-              </form>
-            )}
-          </div>
-          <MainContent posts={posts} setPosts={setPosts} />
-        </>
-      )}
-      {/* //! login and sign up */}
-      {!TrackLogin && (
-        <>
-          {/* //   <LoginForm users={users} setTrackLogin={setTrackLogin} />
-        //   <SignUpForm users={users} setUsers={setUsers} /> */}
+      {/* the routes */}
+      <Routes>
+        {/* //! login and sign up */}
 
-          {!formshowed && (
+        <Route
+          path="/login"
+          element={
             <>
               <LoginForm users={users} setTrackLogin={setTrackLogin} />
               <p>
                 You don't have an account yet ?{" "}
-                <button onClick={() => setFormshowed(true)}>Sign Up</button>
+                <button>
+                  <a href="/signup">Sign Up</a>
+                </button>
               </p>
             </>
-          )}
-
-          {/* Show sign-up form if TrackLogin is true */}
-          {formshowed && (
+          }
+        />
+        <Route
+          path="/signup"
+          element={
             <>
               <SignUpForm users={users} setUsers={setUsers} />
               <p>
                 You already have an account ?{" "}
-                <button onClick={() => setFormshowed(false)}>Log In</button>
+                <button>
+                  <a href="/login">Log In</a>
+                </button>
               </p>
             </>
-          )}
-        </>
-      )}
-
+          }
+        />
+        {TrackLogin && <> </>}
+        <Route
+          path="/home"
+          element={
+            <MainContent
+              posts={posts}
+              setPosts={setPosts}
+              TrackLogin={TrackLogin}
+            />
+          }
+        />
+        <Route
+          path="/AddBlog"
+          element={
+            <AddBlog
+              posts={posts}
+              setPosts={setPosts}
+              TrackLogin={TrackLogin}
+            />
+          }
+        />
+        {console.log(TrackLogin)}
+      </Routes>
       <Footer />
     </div>
   );
